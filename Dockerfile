@@ -23,6 +23,7 @@ RUN apt-get update -q && \
         gdb-avr \
         avr-libc \
         avrdude \
+        unzip \
         && apt-get clean
 
 ADD http://www.atmel.com/images/avr32-headers-6.2.0.742.zip /tmp/avr/headers.zip
@@ -34,8 +35,8 @@ RUN echo "Extracting AVR32 Toolchain" \
     && unzip headers.zip
 
 RUN echo "Moving AVR32 Toolchain to /opt" \
-    && mv avr32-gnu-toolchain-linux_x86 /opt/avr32-tools \
-    && mv avr-headers/avr32 /opt/avr32-tools/avr32/include
+    && mv /tmp/avr/avr32-gnu-toolchain-linux_x86 /opt/avr32-tools \
+    && mv /tmp/avr/avr32 /opt/avr32-tools/avr32/include
 
 RUN locale-gen en_US.UTF-8 && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 
