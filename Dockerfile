@@ -24,6 +24,7 @@ RUN apt-get update -q && \
         avr-libc \
         avrdude \
         unzip \
+        zip \
         && apt-get clean
 
 ADD http://www.atmel.com/images/avr32-headers-6.2.0.742.zip /tmp/avr/headers.zip
